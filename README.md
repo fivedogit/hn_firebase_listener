@@ -11,13 +11,14 @@ Obviously, to make the extension possible, I had to come up with a system for re
 ###Gathering resources:
 
 1. Eclipse. It's all written in Java, and (I think) most Java coders use Eclipse. So get that first, if you don't already have it.
-2. Firebase and Jsoup jars, unless you want to wrangle with Maven for managing dependencies (and you're on your own for that, if so).
-3. You'll need an AWS account. 
-4. You'll need an apache-tomcat folder. Just get the zip file and unzip it somewhere.
+2. ["Firebase"](https://www.firebase.com/docs/android/) and ["Jsoup"](http://jsoup.org/download) jars, unless you want to wrangle with Maven for managing dependencies (and you're on your own for that, if so).
+3. You'll need an ["AWS account"](http://aws.amazon.com/). 
+4. You'll need an ["apache-tomcat"](http://tomcat.apache.org/download-70.cgi) folder. Just get the binary core zip file and unzip it somewhere.
 
 ###Configuring Eclipse:
 
 1. Install the AWS SDK from http://aws.amazon.com/eclipse (help -> install new software)
+1b. Inside eclipse, activate the AWS explorer tab and look for the flag icon. Set your region to your preferred region. I suggest N. VA as the HN Firebase API appears to be in Texas and the performance seemed better than N. California (for whatever reason).
 2. Install JST for Eclipse. Just search for "JST" from all sources and install the 3 packages.
 3. Unless you want to use command-line git, you can use JGit/EGit within Eclipse. Install them from the same "install new software" menu.
 4. Import https://github.com/fivedogit/hn_firebase_listener as a new project. 
@@ -37,13 +38,13 @@ accessKey=GBRGASEFHASJFEJHASJHF
 - J2EE Runtime library
 - JRE System library
 
-If Web app libraries or J2EE Runtime library don't appear as options under "add library", tweak the "Project facets" and "Targeted runtimes" (this is where the apache-tomcat directory comes in) stuff until they do.
+If Web app libraries or J2EE Runtime library don't appear as options under "add library", tweak the "Project facets" and "Targeted runtimes" (this is where the apache-tomcat directory comes in) stuff until they do. You may need to get more Web development related packages from the Eclipse software installer.  
 
 7. Configure web.xml to include the following within the "web-app" tags:
 
-<listener>
+`<listener>
     <listener-class>club.hackbook.hnfbl.FirebaseListener</listener-class>
-</listener>
+</listener>`
 
 The FirebaseListener implements ServletContextListener. This directive tells tomcat how to handle it.
 
@@ -57,12 +58,14 @@ The FirebaseListener implements ServletContextListener. This directive tells tom
 3a. Create an "hn_items" table with a primary hash index called "id" of type NUMBER.
 3b. On the next screen create a Global secondary index: "by-time-index" (hash=by (string), range=time (int))
 
-![Setting up the items primary index](https://s3.amazonaws.com/cyrus-general/primary_index.png)
-![Setting up the items secondary index](https://s3.amazonaws.com/cyrus-general/secondary_index.png)
+![Setting up the items primary index](https://s3.amazonaws.com/cyrus-general/items_primary_index.png)
+![Setting up the items secondary index](https://s3.amazonaws.com/cyrus-general/items_secondary_index.png)
 
 This secondary index will allow you to query all items by a certain user over a period of time.
 
 4. For throughput on these two tables, you should be fine at read=1 and write=5 for each index, adjusting the knobs after you've gotten it running.
+
+Note: I'm set up in the N. Virginia US-EAST-1 region. If you set your tables up elsewhere, you'll need to change the line in FirebaseListener to point to the right region.
 
 ###Running:
 
