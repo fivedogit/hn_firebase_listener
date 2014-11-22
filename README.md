@@ -17,36 +17,27 @@ Obviously, to make the extension possible, I had to come up with a system for re
 
 ###Configuring Eclipse:
 
-1. Install the AWS SDK from http://aws.amazon.com/eclipse (help -> install new software)
-1b. Inside eclipse, activate the AWS explorer tab and look for the flag icon. Set your region to your preferred region. I suggest N. VA as the HN Firebase API appears to be in Texas and the performance seemed better than N. California (for whatever reason).
+1. Install the AWS SDK from http://aws.amazon.com/eclipse. (help -> install new software) Inside eclipse, activate the AWS explorer tab and look for the flag icon. Set your region to your preferred region. I suggest N. VA as the HN Firebase API appears to be in Texas and the performance seemed better than N. California (for whatever reason).
 2. Install JST for Eclipse. Just search for "JST" from all sources and install the 3 packages.
 3. Unless you want to use command-line git, you can use JGit/EGit within Eclipse. Install them from the same "install new software" menu.
 4. Import https://github.com/fivedogit/hn_firebase_listener as a new project. 
-
-Side note: If the git stuff is causing problems (EGit has been giving me issues recently), then just create a brand new AWS Java Web Project, then cut and paste the 3 java files from the repo manually into a package called "club.hackbook.hbfbl".
-
 5. "Side note" method takes care of this automatically, but you'll need an "AwsCredentials.properties" file in your /src folder of the form:
-
-secretKey=b3bniuo3bo3b7yu8fbauibyfu8aybs
-accessKey=GBRGASEFHASJFEJHASJHF
-
+`secretKey=b3bniuo3bo3b7yu8fbauibyfu8aybs
+accessKey=GBRGASEFHASJFEJHASJHF`
 6. Set up your build path. Right click project -> properties -> Java build path -> libraries. Add the following:
-
 - AWS SDK
-- The two jar files from above (Firebase and Jsoup)
+- The two jar files from above (Firebase and Jsoup), also add these to "deployment assembly"
 - Web app libraries
 - J2EE Runtime library
 - JRE System library
-
 If Web app libraries or J2EE Runtime library don't appear as options under "add library", tweak the "Project facets" and "Targeted runtimes" (this is where the apache-tomcat directory comes in) stuff until they do. You may need to get more Web development related packages from the Eclipse software installer.  
-
 7. Configure web.xml to include the following within the "web-app" tags:
-
 `<listener>
     <listener-class>club.hackbook.hnfbl.FirebaseListener</listener-class>
 </listener>`
-
 The FirebaseListener implements ServletContextListener. This directive tells tomcat how to handle it.
+
+Side note: If the git stuff is causing problems (EGit has been giving me issues recently), then just create a brand new AWS Java Web Project, then cut and paste the 3 java files from the repo manually into a package called "club.hackbook.hbfbl".
 
 ###Configuring DynamoDB:
 
