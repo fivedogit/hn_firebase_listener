@@ -1,6 +1,6 @@
 #How to start building a database of HN items and users
 
-Over the past few weeks, I've been building a Hacker News Chrome extension called ["Hackbook"](https://chrome.google.com/webstore/detail/hackbook/logdfcelflpgcbfebibbeajmhpofckjh/) which provides a nice interface for following other users and getting alerts when people reply to you or your karma changes.
+Over the past few weeks, I've been building a Hacker News Chrome extension called ["Hackbook"](https://chrome.google.com/webstore/detail/hackbook/logdfcelflpgcbfebibbeajmhpofckjh/) which provides a nice interface for following other users and getting alerts when people reply to you or your karma changes. Observe:
 
 ![Hackbook Explainer](https://s3.amazonaws.com/cyrus-general/main_explainer.png)
 
@@ -11,9 +11,9 @@ Obviously, to make the extension possible, I had to come up with a system for re
 ###Gathering resources:
 
 1. Eclipse. It's all written in Java, and (I think) most Java coders use Eclipse. So get that first, if you don't already have it.
-2. ["Firebase"](https://www.firebase.com/docs/android/) and ["Jsoup"](http://jsoup.org/download) jars, unless you want to wrangle with Maven for managing dependencies (and you're on your own for that, if so).
-3. You'll need an ["AWS account"](http://aws.amazon.com/). 
-4. You'll need an ["apache-tomcat"](http://tomcat.apache.org/download-70.cgi) folder. Just get the binary core zip file and unzip it somewhere.
+2. [Firebase](https://www.firebase.com/docs/android/) and [Jsoup](http://jsoup.org/download) jars, unless you want to wrangle with Maven for managing dependencies (and you're on your own for that, if so).
+3. You'll need an [AWS account](http://aws.amazon.com/). 
+4. You'll need an [apache-tomcat](http://tomcat.apache.org/download-70.cgi) folder. Just get the binary core zip file and unzip it somewhere.
 
 ###Configuring Eclipse:
 
