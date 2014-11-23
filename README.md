@@ -22,7 +22,7 @@ To make the extension possible, I had to come up with a system for reading the H
 
 ####Gathering resources:
 
-1. Eclipse. It's all written in Java, and (I think) most Java coders use Eclipse. So get that first, if you don't already have it.
+1. Eclipse. This code is written in Java, and Eclipse + AWS SDK makes this process easier. Install Eclipse from your package manager or [get it here](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1). 
 2. [Firebase](https://www.firebase.com/docs/android/) and [Jsoup](http://jsoup.org/download) jars, unless you want to wrangle with Maven for managing dependencies (and you're on your own for that, if so).
 3. You'll need an [AWS account](http://aws.amazon.com/). 
 4. You'll need an [apache-tomcat](http://tomcat.apache.org/download-70.cgi) folder. Just get the binary core zip file and unzip it somewhere.
@@ -72,6 +72,8 @@ This secondary index will allow you to query all items by a certain user over a 
 If everything is set up correctly, you should be good to go. Right click your hn_firebase_listener project in Eclipse -> run on server -> Apache tomcat 7 (local). 
 
 If it's running correctly, your console should show output as the program reads the HN API and commits items and users to the two database tables you set up.
+
+You can also run this on an elastic beanstalk if you don't have enough local bandwidth or processing power. Right click -> run on server -> elastic beanstalk. 
 
 Please email me c@mailcyr at the United States TLD and I'll try to clarify.
 
