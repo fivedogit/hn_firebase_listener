@@ -22,27 +22,37 @@ To make the extension possible, I had to come up with a system for reading the H
 
 ####Gathering resources:
 
-1. Eclipse. This code is written in Java, and Eclipse + AWS SDK makes this process easier. Install Eclipse from your package manager or [get it here](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1). 
+1. Eclipse. 
+
+⋅⋅⋅This code is written in Java, and Eclipse + AWS SDK makes this process easier. Install Eclipse from your package manager or [get it here](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1). 
+
 2. [Firebase](https://www.firebase.com/docs/android/) and [Jsoup](http://jsoup.org/download) jars, unless you want to wrangle with Maven for managing dependencies (and you're on your own for that, if so).
 3. You'll need an [AWS account](http://aws.amazon.com/). 
 4. You'll need an [apache-tomcat](http://tomcat.apache.org/download-70.cgi) folder. Just get the binary core zip file and unzip it somewhere.
 
 ####Configuring Eclipse:
 
-1. Install the AWS SDK from http://aws.amazon.com/eclipse. (help -> install new software) Inside eclipse, activate the AWS explorer tab and look for the flag icon. Set your region to your preferred region. I suggest N. VA as the HN Firebase API appears to be in Texas and the performance seemed better than N. California (for whatever reason).
+1. Install the AWS SDK from http://aws.amazon.com/eclipse. (help -> install new software)
+
+⋅⋅⋅Inside Eclipse, activate the AWS explorer tab and look for the flag icon. Set your region to your preferred region. I suggest N. VA as the HN Firebase API appears to be in Texas and the performance seemed better than N. California (for whatever reason).
+
 2. Install JST for Eclipse. Just search for "JST" from all sources and install the 3 packages.
 3. Unless you want to use command-line git, you can use JGit/EGit within Eclipse. Install them from the same "install new software" menu.
 4. Import https://github.com/fivedogit/hn_firebase_listener as a new project. 
 5. Create an AWSCredentials.properties file and put it in your /src folder. "Side note" (below) method takes care of this automatically:
+
 ⋅⋅⋅secretKey=b3bniuo3bo3b7yu8fbauibyfu8aybs  
 ⋅⋅⋅accessKey=GBRGASEFHASJFEJHASJHF
+
 6. Set up your build path. Right click project -> properties -> Java build path -> libraries. Add the following:
-- AWS SDK
-- The two jar files from above (Firebase and Jsoup), also add these to "deployment assembly"
-- Web app libraries
-- J2EE Runtime library
-- JRE System library
-If Web app libraries or J2EE Runtime library don't appear as options under "add library", tweak the "Project facets" and "Targeted runtimes" (this is where the apache-tomcat directory comes in) stuff until they do. You may need to get more Web development related packages from the Eclipse software installer.  
+⋅⋅⋅AWS SDK  
+⋅⋅⋅The two jar files from above (Firebase and Jsoup), also add these to "deployment assembly"  
+⋅⋅⋅Web app libraries  
+⋅⋅⋅J2EE Runtime library  
+⋅⋅⋅JRE System library
+
+⋅⋅⋅If Web app libraries or J2EE Runtime library don't appear as options under "add library", tweak the "Project facets" and "Targeted runtimes" (this is where the apache-tomcat directory comes in) stuff until they do. You may need to get more Web development related packages from the Eclipse software installer.  
+
 7. Configure web.xml to include the following within the "web-app" tags:
 ```
 <listener>
