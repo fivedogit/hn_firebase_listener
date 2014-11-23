@@ -22,8 +22,10 @@ Obviously, to make the extension possible, I had to come up with a system for re
 3. Unless you want to use command-line git, you can use JGit/EGit within Eclipse. Install them from the same "install new software" menu.
 4. Import https://github.com/fivedogit/hn_firebase_listener as a new project. 
 5. "Side note" method takes care of this automatically, but you'll need an "AwsCredentials.properties" file in your /src folder of the form:
+```
 secretKey=b3bniuo3bo3b7yu8fbauibyfu8aybs
 accessKey=GBRGASEFHASJFEJHASJHF
+```
 6. Set up your build path. Right click project -> properties -> Java build path -> libraries. Add the following:
 - AWS SDK
 - The two jar files from above (Firebase and Jsoup), also add these to "deployment assembly"
@@ -32,9 +34,11 @@ accessKey=GBRGASEFHASJFEJHASJHF
 - JRE System library
 If Web app libraries or J2EE Runtime library don't appear as options under "add library", tweak the "Project facets" and "Targeted runtimes" (this is where the apache-tomcat directory comes in) stuff until they do. You may need to get more Web development related packages from the Eclipse software installer.  
 7. Configure web.xml to include the following within the "web-app" tags:
-`<listener>
+```
+<listener>
     <listener-class>club.hackbook.hnfbl.FirebaseListener</listener-class>
-</listener>`
+</listener>
+```
 The FirebaseListener implements ServletContextListener. This directive tells tomcat how to handle it.
 
 Side note: If the git stuff is causing problems (EGit has been giving me issues recently), then just create a brand new AWS Java Web Project, then cut and paste the 3 java files from the repo manually into a package called "club.hackbook.hbfbl".
