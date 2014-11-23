@@ -2,7 +2,7 @@
 
 Over the past few weeks, I've been building a Hacker News Chrome extension called ["Hackbook"](https://chrome.google.com/webstore/detail/hackbook/logdfcelflpgcbfebibbeajmhpofckjh/) which provides a nice interface for following other users and getting alerts when people reply to you or your karma changes. Observe:
 
-![Hackbook Explainer](https://s3.amazonaws.com/cyrus-general/main_explainer.png)
+![Hackbook Explainer](https://s3.amazonaws.com/cyrus-general/main_explainer2.png)
 
 ##[Get Hackbook here](https://chrome.google.com/webstore/detail/hackbook/logdfcelflpgcbfebibbeajmhpofckjh) 
 
