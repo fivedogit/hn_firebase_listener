@@ -69,12 +69,12 @@ Side note: If the git stuff is causing problems (EGit has been giving me issues 
 1. Go into your AWS console (https://console.aws.amazon.com) and click DynamoDB. (I recommend doing this in the N. Virginia (US-EAST-1) region. If you set your tables up elsewhere, you'll need to change the line in FirebaseListener to point to the correct region.)
 2. Create an "hn_users" table with a primary hash index called "id" of type string. That's all. 
 
-![Setting up the users primary index](https://s3.amazonaws.com/cyrus-general/users_primary_index.png)
+   ![Setting up the users primary index](https://s3.amazonaws.com/cyrus-general/users_primary_index.png)
 
 3. Create an "hn_items" table with a primary hash index called "id" of type NUMBER. Also create a Global secondary index: "by-time-index" (hash=by (string), range=time (int))
 
-![Setting up the items primary index](https://s3.amazonaws.com/cyrus-general/items_primary_index.png)
-![Setting up the items secondary index](https://s3.amazonaws.com/cyrus-general/items_secondary_index.png)
+   ![Setting up the items primary index](https://s3.amazonaws.com/cyrus-general/items_primary_index.png)
+   ![Setting up the items secondary index](https://s3.amazonaws.com/cyrus-general/items_secondary_index.png)
 
 This secondary index will allow you to query all items by a certain user over a period of time. For throughput on these two tables, you should be fine at read=1 and write=5 for each index, adjusting the knobs after you've gotten it running.
 
