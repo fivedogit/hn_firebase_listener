@@ -6,6 +6,8 @@ Over the past few weeks, I've been building a Hacker News Chrome extension calle
 
 Obviously, to make the extension possible, I had to come up with a system for reading the HN API, storing information and firing alerts based on whatever changes happen. This repository is the skeleton code for that core functionality of listening to the HN API.
 
+>Quick note: I'm looking for work in NYC, SF, DC, Cincinnati, Louisville or remote. I'm a product-oriented full-stack engineer (JavaScript/Java/MySQL/NoSQL) with specialties in Chrome extensions, video recording/processing and everything AWS. I prefer to work on projects in the idea-to-beta phase (i.e. building the MVP), but I'm happy to discuss mature projects, too. I'm also an experienced sales engineer in the CDN and SaaS products spaces. 
+
 ##HowTo:
 
 ###Overview:
@@ -29,10 +31,9 @@ Obviously, to make the extension possible, I had to come up with a system for re
 2. Install JST for Eclipse. Just search for "JST" from all sources and install the 3 packages.
 3. Unless you want to use command-line git, you can use JGit/EGit within Eclipse. Install them from the same "install new software" menu.
 4. Import https://github.com/fivedogit/hn_firebase_listener as a new project. 
-5. Create an AWSCredentials.properties file and put it in your /src folder. "Side note" (below) method takes care of this automatically:```
-secretKey=b3bniuo3bo3b7yu8fbauibyfu8aybs
-accessKey=GBRGASEFHASJFEJHASJHF
-```
+5. Create an AWSCredentials.properties file and put it in your /src folder. "Side note" (below) method takes care of this automatically:
+⋅⋅⋅secretKey=b3bniuo3bo3b7yu8fbauibyfu8aybs  
+⋅⋅⋅accessKey=GBRGASEFHASJFEJHASJHF
 6. Set up your build path. Right click project -> properties -> Java build path -> libraries. Add the following:
 - AWS SDK
 - The two jar files from above (Firebase and Jsoup), also add these to "deployment assembly"
